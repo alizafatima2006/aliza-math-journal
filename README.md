@@ -1,4 +1,4 @@
-# The Mathematics Journal
+# The Mathematics Journal/Notes in Mathematics
 Welcome!
 
 This repository contains the source files for my personal mathematics journal. 

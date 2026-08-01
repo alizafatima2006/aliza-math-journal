@@ -150,3 +150,89 @@
     }
   }
 }
+
+
+
+/* My Edits */
+/* Notes on Mathematics — typography foundation */
+
+:root {
+	--font-journal: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
+}
+
+html,
+body {
+	font-family: var(--font-journal);
+}
+
+button,
+input,
+textarea,
+select {
+	font-family: inherit;
+}
+
+/* Editorial heading hierarchy */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-journal);
+	font-weight: 520;
+	letter-spacing: -0.015em;
+	color: var(--journal-ink, #202124);
+}
+
+h1 {
+	line-height: 1.08;
+}
+
+h2,
+h3 {
+	line-height: 1.2;
+}
+
+/* Comfortable long-form reading */
+
+.markdown,
+.prose,
+article {
+	font-size: 1.06rem;
+	line-height: 1.72;
+}
+
+.markdown p,
+.prose p,
+article p {
+	margin-block: 1.15em;
+}
+
+/* Sharp editorial geometry */
+
+.card-base,
+.card-base-regular,
+.card-base::before,
+.card-base::after,
+.card-base-regular::before,
+.card-base-regular::after,
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl {
+	border-radius: 0 !important;
+}
+
+/* Remove rounded corners from post cards and main panels */
+
+article,
+main > div,
+.post-card,
+.post-container {
+	border-radius: 0 !important;
+}
+.card-base,
+.card-base-regular {
+	box-shadow: none !important;
+}

@@ -1,9 +1,6 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+*Notes on Mathematics* is an independent mathematics journal created by Aliza Fatima, an undergraduate student at the University of Toronto studying Applied Mathematics, Physics, and Statistics.
 
-::github{repo="saicaca/fuwari"}
+The journal features expository articles, research notes, mathematical puzzles, and computational explorations in various fields of mathematics with a focus on probability theory, mathematical finance, and pure mathematics. Its purpose is to carefully explore mathematical ideas, translate abstract concepts, and document the devlopment of long-term research interests.
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+The Journal is currently under development.

@@ -232,7 +232,130 @@ main > div,
 .post-container {
 	border-radius: 0 !important;
 }
-.card-base,
-.card-base-regular {
+
+/* Notes on Mathematics — colour system */
+
+:root {
+	--journal-navy: #172b4d;
+	--journal-navy-hover: #28456f;
+
+	--journal-ink: #202124;
+	--journal-muted: #66686d;
+
+	--journal-paper: #f7f3e8;
+	--journal-surface: #fffdf7;
+	--journal-rule: #d7d0c3;
+
+	--journal-header: #090c10;
+
+    --article-paper: #f7f3e8;
+	--article-ink: #202124;
+
+	/* Override key Fuwari colours */
+	--primary: var(--journal-navy);
+	--card-bg: var(--journal-surface);
+}
+
+html.dark {
+	--journal-navy: #aabbd4;
+	--journal-navy-hover: #d0dae7;
+
+	--journal-ink: #eeeae2;
+	--journal-muted: #b9b4ac;
+
+	--journal-paper: #090c10;
+	--journal-surface: #090c10;
+	--journal-rule: #2a3038;
+
+	--journal-header: #090c10;
+
+    --article-paper: #f7f3e8;
+	--article-ink: #202124;
+
+	--primary: var(--journal-navy);
+	--card-bg: var(--journal-surface);
+}
+
+html,
+body,
+main {
+	background: var(--journal-paper) !important;
+	color: var(--journal-ink);
+}
+
+.journal-list,
+.journal-entry {
+	background: var(--journal-paper) !important;
+}
+
+a {
+	color: var(--journal-navy);
+}
+
+a:hover {
+	color: var(--journal-navy-hover);
+}
+
+.journal-entry__type {
+	color: var(--journal-navy);
+}
+
+/* Journal navigation */
+
+.journal-navbar-shell {
+	background: var(--journal-header) !important;
+}
+
+.journal-navbar-cap,
+.journal-navbar {
+	background: var(--journal-header) !important;
+}
+
+.journal-navbar {
+	border: 0 !important;
+	border-bottom: 1px solid var(--journal-rule) !important;
+	border-radius: 0 !important;
 	box-shadow: none !important;
+}
+
+.journal-brand {
+	color: #f2eee4;
+}
+
+html.dark .journal-brand {
+	color: #f2eee4;
+}
+
+.journal-navbar a,
+.journal-navbar button {
+	color: #f2eee4;
+}
+
+.journal-navbar a:hover,
+.journal-navbar button:hover {
+	color: #f2eee4;
+}
+
+/* Replace Fuwari's generated accent colour */
+
+:root,
+html.dark {
+	--primary: var(--journal-navy) !important;
+}
+
+.text-\[var\(--primary\)\] {
+	color: var(--journal-navy) !important;
+}
+
+.bg-\[var\(--primary\)\] {
+	background-color: var(--journal-navy) !important;
+}
+
+.border-\[var\(--primary\)\] {
+	border-color: var(--journal-navy) !important;
+}
+
+/* Synchronize Icon and Title */
+.journal-home-icon {
+	color: inherit;
 }

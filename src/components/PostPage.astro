@@ -8,21 +8,121 @@ const { page } = Astro.props;
 let delay = 0;
 const interval = 50;
 ---
-<div class="transition flex flex-col rounded-[var(--radius-large)] bg-[var(--card-bg)] py-1 md:py-0 md:bg-transparent md:gap-4 mb-4">
-    {page.data.map((entry: CollectionEntry<"posts">) => (
-        <PostCard
-                entry={entry}
-                title={entry.data.title}
-                tags={entry.data.tags}
-                category={entry.data.category}
-                published={entry.data.published}
-                updated={entry.data.updated}
-                url={getPostUrlBySlug(entry.slug)}
-                image={entry.data.image}
-                description={entry.data.description}
-                draft={entry.data.draft}
-                class:list="onload-animation"
-                style={`animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
-        ></PostCard>
-    ))}
+<header class="journal-masthead">
+
+	<h1>Notes on Mathematics</h1>
+
+	<p class="journal-masthead__subtitle">
+		A collection of expository articles and research notes exploring
+		probability, mathematical finance, and pure mathematics.
+	</p>
+
+    <nav class="journal-sections" aria-label="Journal sections">
+	<a href="/articles/">Articles</a>
+	<a href="/research-notes/">Research Notes</a>
+	<a href="/problems-and-paradoxes/">Problems &amp; Paradoxes</a>
+	<a href="/collected-works/">Collected Works</a>
+</nav>
+</header>
+
+<!--
+<div class="journal-list transition flex flex-col mb-4">
+	{
+		page.data.map((entry: CollectionEntry<"posts">) => (
+			<PostCard
+				entry={entry}
+				title={entry.data.title}
+				tags={entry.data.tags}
+				category={entry.data.category}
+				published={entry.data.published}
+				updated={entry.data.updated}
+				url={getPostUrlBySlug(entry.slug)}
+				image={entry.data.image}
+				description={entry.data.description}
+				draft={entry.data.draft}
+				class:list="onload-animation"
+				style={`animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
+			/>
+		))
+	}
 </div>
+-->
+
+
+<style>
+	.journal-list {
+		width: 100%;
+		margin: 0 0 1rem;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+	}
+
+    .journal-masthead {
+	max-width: 58rem;
+	margin: 0 auto;
+	padding: 5rem 3rem 4rem;
+
+	text-align: center;
+}
+
+.journal-masthead h1 {
+	margin: 0;
+	color: var(--journal-ink);
+	font-family: var(--font-journal);
+	font-size: clamp(3rem, 7vw, 5.25rem);
+	font-weight: 460;
+	line-height: 0.98;
+	letter-spacing: -0.032em;
+}
+
+.journal-masthead__subtitle {
+	max-width: 40rem;
+	margin: 1.5rem auto 0;
+
+	color: var(--journal-muted);
+
+	font-size: 1.15rem;
+	line-height: 1.75;
+}
+
+.journal-sections {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 2.5rem;
+	margin-top: 2.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--journal-rule);
+	font-size: 0.9rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+.journal-sections a {
+	color: var(--journal-ink);
+	text-decoration: none;
+}
+
+.journal-sections a:hover {
+	color: var(--journal-navy);
+}
+
+@media (max-width: 640px) {
+	.journal-masthead {
+		padding: 3rem 1.5rem 2.75rem;
+	}
+
+	.journal-masthead h1 {
+		font-size: 3rem;
+	}
+
+	.journal-sections {
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+}
+
+</style>

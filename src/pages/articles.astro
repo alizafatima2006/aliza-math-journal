@@ -1,60 +1,67 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import SectionPage from "../components/SectionPage.astro";
+import PostCard from "../components/PostCard.astro";
+import { getPostUrlBySlug } from "../utils/url-utils";
+
+const allPosts = await getCollection("posts");
+
+const articles = allPosts
+	.filter((entry: CollectionEntry<"posts">) => {
+		const isVisible = !import.meta.env.PROD || !entry.data.draft;
+		return isVisible && entry.data.category === "Articles";
+	})
+	.sort(
+		(a, b) =>
+			b.data.published.getTime() - a.data.published.getTime(),
+	);
 ---
 
-<Layout title="Articles">
-	<main class="section-page">
-		<header class="section-page__header">
-			<p class="section-page__kicker">Notes on Mathematics</p>
-			<h1>Expository Articles</h1>
-			<p>
-				Carefully written essays exploring mathematical ideas,
-				their history, and their wider significance.
-			</p>
-		</header>
-	</main>
+<Layout title="Expository Articles">
+	<SectionPage
+		title="Expository Articles"
+		description={`Carefully written essays exploring mathematical ideas, their history,
+and their wider significance.`}
+	>
+		<section class="section-list" aria-label="Expository articles">
+			{
+				articles.length > 0 ? (
+					articles.map((entry) => (
+						<PostCard
+							entry={entry}
+							title={entry.data.title}
+							tags={entry.data.tags}
+							category={entry.data.category}
+							published={entry.data.published}
+							updated={entry.data.updated}
+							url={getPostUrlBySlug(entry.slug)}
+							image={entry.data.image}
+							description={entry.data.description}
+							draft={entry.data.draft}
+							style=""
+						/>
+					))
+				) : (
+					<p class="section-empty-custom">
+						No articles have been published yet.
+					</p>
+				)
+			}
+		</section>
+	</SectionPage>
 </Layout>
 
 <style>
-	.section-page {
-		min-height: 60vh;
-		padding: 5rem 3rem;
+	.section-list {
+		width: 100%;
 	}
 
-	.section-page__header {
-		max-width: 48rem;
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	.section-page__kicker {
-		margin: 0 0 1rem;
-		color: var(--journal-navy);
-		font-size: 0.76rem;
-		font-weight: 650;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-	}
-
-	.section-page h1 {
-		margin: 0;
-		color: var(--journal-ink);
-		font-size: clamp(2.75rem, 6vw, 4.5rem);
-		font-weight: 470;
-		line-height: 1;
-	}
-
-	.section-page__header > p:last-child {
-		max-width: 38rem;
-		margin: 1.5rem auto 0;
+	.section-empty-custom {
+		padding: 3rem 0;
+		border-top: 1px solid var(--journal-rule);
+		border-bottom: 1px solid var(--journal-rule);
 		color: var(--journal-muted);
-		font-size: 1.12rem;
-		line-height: 1.7;
-	}
-
-	@media (max-width: 640px) {
-		.section-page {
-			padding: 3rem 1.5rem;
-		}
+		text-align: center;
 	}
 </style>

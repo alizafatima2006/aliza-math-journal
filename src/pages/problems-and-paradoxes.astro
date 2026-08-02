@@ -1,60 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SectionPage from "../components/SectionPage.astro";
 ---
 
 <Layout title="Problems and Paradoxes">
-	<main class="section-page">
-		<header class="section-page__header">
-			<p class="section-page__kicker">Notes on Mathematics</p>
-			<h1>Problems &amp; Paradoxes</h1>
-            <p>
-	            Mathematical puzzles, counterintuitive problems, hints, solutions,
-	            and the ideas they reveal.
-            </p>
-		</header>
-	</main>
-</Layout>
-
-<style>
-	.section-page {
-		min-height: 60vh;
-		padding: 5rem 3rem;
-	}
-
-	.section-page__header {
-		max-width: 48rem;
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	.section-page__kicker {
-		margin: 0 0 1rem;
-		color: var(--journal-navy);
-		font-size: 0.76rem;
-		font-weight: 650;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-	}
-
-	.section-page h1 {
-		margin: 0;
-		color: var(--journal-ink);
-		font-size: clamp(2.75rem, 6vw, 4.5rem);
-		font-weight: 470;
-		line-height: 1;
-	}
-
-	.section-page__header > p:last-child {
-		max-width: 38rem;
-		margin: 1.5rem auto 0;
-		color: var(--journal-muted);
-		font-size: 1.12rem;
-		line-height: 1.7;
-	}
-
-	@media (max-width: 640px) {
-		.section-page {
-			padding: 3rem 1.5rem;
+	<SectionPage
+		title="Problems & Paradoxes"
+		description={
+		`A collection of mathematical puzzles and 
+		counterintuitive problems accompanied with hints, solutions, 
+		and the ideas that emerge from them.`
 		}
-	}
-</style>
+		emptyMessage="No problems or paradoxes have been published yet."
+	/>
+</Layout>

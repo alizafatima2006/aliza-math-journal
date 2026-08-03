@@ -6,5 +6,3 @@ tags: [Probability, Martingales, Optional Stopping]
 category: Articles
 draft: true
 ---
-
-# The Illusion of Winning Strategies

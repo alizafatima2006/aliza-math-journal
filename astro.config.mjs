@@ -7,7 +7,6 @@ import swup from "@swup/astro";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
@@ -23,6 +22,7 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+import { MathEnvironmentComponent } from "./src/plugins/rehype-component-math-environment.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -125,29 +125,69 @@ export default defineConfig({
 						important: (x, y) => AdmonitionComponent(x, y, "important"),
 						caution: (x, y) => AdmonitionComponent(x, y, "caution"),
 						warning: (x, y) => AdmonitionComponent(x, y, "warning"),
-					},
-				},
-			],
-			[
-				rehypeAutolinkHeadings,
-				{
-					behavior: "append",
-					properties: {
-						className: ["anchor"],
-					},
-					content: {
-						type: "element",
-						tagName: "span",
-						properties: {
-							className: ["anchor-icon"],
-							"data-pagefind-ignore": true,
-						},
-						children: [
-							{
-								type: "text",
-								value: "#",
-							},
-						],
+
+						theorem: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"theorem",
+							),
+
+						definition: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"definition",
+							),
+
+						lemma: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"lemma",
+							),
+
+						proposition: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"proposition",
+							),
+
+						corollary: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"corollary",
+							),
+
+						proof: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"proof",
+							),
+
+						remark: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"remark",
+							),
+
+						example: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"example",
+							),
+
+						exercise: (properties, children) =>
+							MathEnvironmentComponent(
+								properties,
+								children,
+								"exercise",
+							),
 					},
 				},
 			],

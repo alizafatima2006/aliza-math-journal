@@ -1,10 +1,10 @@
 ---
 title: The Role of Puzzles in Mathematics
-published: 2026-07-31
+published: 2026-06-15
 description: An exploration of why puzzles, games, and paradoxes are essential for the development of serious mathematics.
 tags: [History, Puzzles, Paradoxes]
 category: Articles
-draft: true
+draft: false
 ---
 Complex theorems, winding proofs, foreign terminology: to the uninitiated student or layperson of higher maths, the subject seems a daunting presence. It hovers over the world of science and economics as a serpentine pillar, supporting the core ideas, though possessing a depth and intricacy that are difficult to reconcile. Few know or truly appreciate that at the heart of most serious mathematics lie puzzles in the form of thought experiments, paradoxes, and logical reasonings that invite exploration rather than intimidation. In contrast to the unknown terrain of advanced mathematics, puzzles are a familiar path that becomes illuminated as exploration deepens. These two paths are not separate. They are intimately connected, with puzzles acting as a gateway to deeper ideas and powerful theorems. Far from simply recreational curiosities, puzzles are central to mathematics because they drive the development of significant mathematical concepts, are central to discovering and writing proofs, and lead to deep mathematical ideas.
 

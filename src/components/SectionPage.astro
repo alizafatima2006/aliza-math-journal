@@ -1,4 +1,6 @@
 ---
+import { url } from "../utils/url-utils";
+
 interface Props {
 	title: string;
 	description: string;
@@ -13,7 +15,7 @@ const {
 ---
 
 <main class="section-page">
-	<a class="back-home" href="/">
+	<a class="back-home" href={url("/")}>
 		<span aria-hidden="true">←</span>
 		Notes on Mathematics
 	</a>

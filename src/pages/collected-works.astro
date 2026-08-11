@@ -1,12 +1,65 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import SectionPage from "../components/SectionPage.astro";
+import PostCard from "../components/PostCard.astro";
+import { getPostUrlBySlug } from "../utils/url-utils";
+
+const allPosts = await getCollection("posts");
+
+const collectedWorks = allPosts
+	.filter((entry: CollectionEntry<"posts">) => {
+		return !import.meta.env.PROD || !entry.data.draft;
+	})
+	.sort(
+		(a, b) =>
+			b.data.published.getTime() - a.data.published.getTime(),
+	);
 ---
 
 <Layout title="Collected Works">
 	<SectionPage
-	title="Collected Works"
-	description={`A chronological record of all articles,
-research notes, problems, and other mathematical projects.`}
-	emptyMessage="The complete collection will appear here."
-/>
+		title="Collected Works"
+		description={`A chronological record of all articles, research notes, problems, and other mathematical projects.`}
+	>
+		<section class="collected-list" aria-label="Collected works">
+			{
+				collectedWorks.length > 0 ? (
+					collectedWorks.map((entry) => (
+						<PostCard
+							entry={entry}
+							title={entry.data.title}
+							tags={entry.data.tags}
+							category={entry.data.category}
+							published={entry.data.published}
+							updated={entry.data.updated}
+							url={getPostUrlBySlug(entry.slug)}
+							image={entry.data.image}
+							description={entry.data.description}
+							draft={entry.data.draft}
+							style=""
+						/>
+					))
+				) : (
+					<p class="collected-empty">
+						No works have been published yet.
+					</p>
+				)
+			}
+		</section>
+	</SectionPage>
+</Layout>
+
+<style>
+	.collected-list {
+		width: 100%;
+	}
+
+	.collected-empty {
+		padding: 3rem 0;
+		border-top: 1px solid var(--journal-rule);
+		border-bottom: 1px solid var(--journal-rule);
+		color: var(--journal-muted);
+		text-align: center;
+	}
+</style>

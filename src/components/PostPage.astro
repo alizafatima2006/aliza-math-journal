@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getPostUrlBySlug } from "@utils/url-utils";
+import { getPostUrlBySlug, url } from "@utils/url-utils";
 import PostCard from "./PostCard.astro";
 
 const { page } = Astro.props;
@@ -18,10 +18,10 @@ const interval = 50;
 	</p>
 
     <nav class="journal-sections" aria-label="Journal sections">
-	<a href="/articles/">Articles</a>
-	<a href="/research-notes/">Research Notes</a>
-	<a href="/problems-and-paradoxes/">Problems &amp; Paradoxes</a>
-	<a href="/collected-works/">Collected Works</a>
+	<a href={url("/articles/")}>Articles</a>
+	<a href={url("/research-notes/")}>Research Notes</a>
+	<a href={url("/problems-and-paradoxes/")}>Problems &amp; Paradoxes</a>
+	<a href={url("/collected-works/")}>Collected Works</a>
 </nav>
 </header>
 

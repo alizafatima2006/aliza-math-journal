@@ -6,7 +6,7 @@ import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@utils/content-utils";
-import { getDir, getPostUrlBySlug } from "@utils/url-utils";
+import { getDir, getPostUrlBySlug, url } from "@utils/url-utils";
 import { licenseConfig } from "src/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import { profileConfig, siteConfig } from "../../config";
@@ -59,7 +59,7 @@ const jsonLd = {
 	></script>
 
 	<article class="article-shell">
-		<a class="article-back" href="/articles/">
+		<a class="article-back" href={url("/articles/")}>
 			<span aria-hidden="true">←</span>
 			Expository Articles
 		</a>
@@ -414,8 +414,18 @@ const jsonLd = {
 	opacity: 1 !important;
 }
 
-:global(.article-content p) {
-	margin: 1.15em 0;
+.article-content :global(p) {
+    margin: 0;
+    text-indent: 1.8em;
+}
+
+.article-content :global(h2 + p),
+.article-content :global(h3 + p),
+.article-content :global(.math-environment + p),
+.article-content :global(.katex-display + p),
+.article-content :global(hr + p) {
+    text-indent: 0;
+    margin-top: 1.2em;
 }
 
 :global(.article-content ul),

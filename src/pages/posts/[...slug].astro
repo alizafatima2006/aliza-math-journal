@@ -151,31 +151,31 @@ const jsonLd = {
 
 	<nav class="article-navigation" aria-label="Adjacent articles">
 		{
-			entry.data.nextSlug ? (
-				<a href={getPostUrlBySlug(entry.data.nextSlug)}>
-					<span class="article-navigation__label">
-						← Previous
-					</span>
-					<span>{entry.data.nextTitle}</span>
-				</a>
-			) : (
-				<span></span>
-			)
-		}
+	entry.data.prevSlug ? (
+		<a href={getPostUrlBySlug(entry.data.prevSlug)}>
+			<span class="article-navigation__label">
+				← Previous
+			</span>
+			<span>{entry.data.prevTitle}</span>
+		</a>
+	) : (
+		<span></span>
+	)
+}
 
-		{
-			entry.data.prevSlug && (
-				<a
-					class="article-navigation__next"
-					href={getPostUrlBySlug(entry.data.prevSlug)}
-				>
-					<span class="article-navigation__label">
-						Next →
-					</span>
-					<span>{entry.data.prevTitle}</span>
-				</a>
-			)
-		}
+{
+	entry.data.nextSlug && (
+		<a
+			class="article-navigation__next"
+			href={getPostUrlBySlug(entry.data.nextSlug)}
+		>
+			<span class="article-navigation__label">
+				Next →
+			</span>
+			<span>{entry.data.nextTitle}</span>
+		</a>
+	)
+}
 	</nav>
 </MainGridLayout>
 

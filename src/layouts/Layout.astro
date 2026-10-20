@@ -77,6 +77,31 @@ const bannerOffset =
 	  data-overlayscrollbars-initialize
 >
 	<head>
+/* This code is to try preloading the math expressions */
+
+	<link
+    rel="preload"
+    href={`${import.meta.env.BASE_URL}fonts/katex/KaTeX_Main-Regular.woff2`}
+    as="font"
+    type="font/woff2"
+    crossorigin
+/>
+
+<link
+    rel="preload"
+    href={`${import.meta.env.BASE_URL}fonts/katex/KaTeX_Math-Italic.woff2`}
+    as="font"
+    type="font/woff2"
+    crossorigin
+/>
+
+<link
+    rel="preload"
+    href={`${import.meta.env.BASE_URL}fonts/katex/KaTeX_AMS-Regular.woff2`}
+    as="font"
+    type="font/woff2"
+    crossorigin
+/>
 
 		<title>{pageTitle}</title>
 

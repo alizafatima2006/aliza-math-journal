@@ -33,7 +33,7 @@ export default defineConfig({
 		tailwind({
 			nesting: true,
 		}),
-		swup({
+	 			swup({
 			theme: false,
 			animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
 			// the default value `transition-` cause transition delay
@@ -47,6 +47,7 @@ export default defineConfig({
 			updateBodyClass: false,
 			globalInstance: true,
 		}),
+
 		icon({
 			include: {
 				"preprocess: vitePreprocess(),": ["*"],
